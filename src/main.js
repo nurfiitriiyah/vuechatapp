@@ -4,24 +4,21 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 Vue.config.productionTip = false
-
+import VueSocketIO from 'vue-socket.io'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import VueSocketIO from 'vue-socket.io'
-// Vue.use(new VueSocketIO({
-//   debug: true,
-//   connection: 'ws://127.0.0.1:12312',
-//   vuex: {
-//     actionPrefix: 'SOCKET_',
-//     mutationPrefix: 'SOCKET_'
-//   },
-//   options: { path: "/ws" } //Optional options
-// }))
-
-
 Vue.use(BootstrapVue)
+
+Vue.use(new VueSocketIO({
+  debug: true,
+  connection: 'http://127.0.0.1:3000/',
+  vuex: {
+    actionPrefix: 'SOCKET_',
+    mutationPrefix: 'SOCKET_'
+  }
+}))
 
 new Vue({
   el: '#app',
